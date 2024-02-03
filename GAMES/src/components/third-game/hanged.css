@@ -1,0 +1,77 @@
+#hangman-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#hangman-image {
+  margin-top: 40px;
+  width: 100px;
+  height: 100px;
+}
+
+#word-container {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.word-letter {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 20px;
+  margin: 0 5px;
+  border-bottom: 2px solid #000;
+}
+
+.word-letter.hidden {
+  visibility: hidden;
+}
+
+#attempts-container {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#letters-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.letter {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  background-color: #4ba78b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+
+  /* Centrar el texto verticalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter.disabled {
+  pointer-events: none;
+  background-color: #8a1c1c !important;
+  color: #ffffff !important;
+}
+
+/* Media query para hacer responsive el diseño */
+@media (max-width: 600px) {
+  .letter {
+    margin: 0 0 10px 0;
+  }
+}
