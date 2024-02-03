@@ -57,7 +57,7 @@
   transition: background-color 0.3s;
   margin-bottom: 10px;
 
-  /* Centrar el texto verticalmente */
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,7 +69,7 @@
   color: #ffffff !important;
 }
 
-/* Media query para hacer responsive el diseño */
+
 @media (max-width: 600px) {
   .letter {
     margin: 0 0 10px 0;

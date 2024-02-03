@@ -1,11 +1,10 @@
-/* game.css */
 
 #game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 70vh; /* Ajustado el alto */
+  height: 70vh; 
 }
 
 #board {
@@ -41,8 +40,8 @@
 #player-selection-grid {
   display: flex;
   flex-direction: row;
-  gap: 20px; /* Ajusta el espacio entre los botones */
-  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+  gap: 20px; 
+  margin-top: 20px; 
 }
 
 button {

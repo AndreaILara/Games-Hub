@@ -1,4 +1,4 @@
-// rockPaperScissors.js
+
 import './rockPaperScissors.css';
 
 export function startRockPaperScissors() {
@@ -16,7 +16,7 @@ export function startRockPaperScissors() {
 
   const userScoreDisplay = document.createElement('p');
   const computerScoreDisplay = document.createElement('p');
-  const resultDisplay = document.createElement('p'); // Nuevo elemento para mostrar el resultado
+  const resultDisplay = document.createElement('p');
 
   updateUserScore();
   updateComputerScore();
@@ -34,7 +34,7 @@ export function startRockPaperScissors() {
   container.appendChild(userScoreDisplay);
   container.appendChild(computerScoreDisplay);
   container.appendChild(choicesContainer);
-  container.appendChild(resultDisplay); // Agregado para mostrar el resultado
+  container.appendChild(resultDisplay);
 
   function playRound(userChoice) {
     const computerChoice = getComputerChoice();
@@ -47,14 +47,14 @@ export function startRockPaperScissors() {
       case 'Lose':
         computerWins++;
         break;
-      // No action needed for 'draw'
+
     }
 
     updateUserScore();
     updateComputerScore();
     saveGameData();
 
-    // Actualizado para mostrar el resultado en la interfaz
+
     resultDisplay.textContent = `You chose ${userChoice}. The machine chose ${computerChoice}. Result: ${result.toUpperCase()}.`;
   }
 
@@ -90,7 +90,7 @@ export function startRockPaperScissors() {
   }
 
   function saveGameData() {
-    // Puedes almacenar cualquier otro dato del juego que desees aquí
+
   }
 
   return container;

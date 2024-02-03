@@ -33,11 +33,11 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: color 0.3s ease; /* Agregamos la transición de color */
+  transition: color 0.3s ease; 
 }
 
 h1:hover {
-  color: #ffcc00; /* Color diferente al hacer hover */
+  color: #ffcc00; 
 }
 .game-buttons {
   display: flex;

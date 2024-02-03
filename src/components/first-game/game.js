@@ -1,4 +1,4 @@
-// game.js
+
 import './game.css';
 
 export function startGame() {
@@ -37,7 +37,7 @@ export function startGame() {
   }
 
   function renderBoard() {
-    // Limpiar el contenedor antes de renderizar un nuevo tablero
+
     container.innerHTML = '';
     container.appendChild(playerSelection);
 
@@ -92,7 +92,7 @@ export function startGame() {
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
         gameOver = true;
         showMessage(`${currentPlayer} Wins!`);
-        setTimeout(() => resetGame(), 2000); // Espera 2 segundos antes de reiniciar el juego
+        setTimeout(() => resetGame(), 2000);
         return;
       }
     }
@@ -102,7 +102,7 @@ export function startGame() {
     if (!board.includes(null) && !gameOver) {
       gameOver = true;
       showMessage('Tie!');
-      setTimeout(() => resetGame(), 2000); // Espera 2 segundos antes de reiniciar el juego
+      setTimeout(() => resetGame(), 2000);
     }
   }
 

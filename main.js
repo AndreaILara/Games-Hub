@@ -16,13 +16,13 @@ const gameButtonsContainer = document.getElementById('game-buttons-container');
 const gameContainer = document.getElementById('game-container');
 
 gameTitle.addEventListener('click', () => {
-  // Desaparecer el h1 al hacer clic
+
   gameTitle.style.display = 'none';
 
-  // Mostrar los botones de los juegos
+
   gameButtonsContainer.innerHTML = '';
   const buttons = createGameButtons(Object.keys(games), startGameByName);
-  buttons.classList.add('game-buttons'); // Agrega la clase .game-buttons al contenedor
+  buttons.classList.add('game-buttons');
   gameButtonsContainer.appendChild(buttons);
 });
 
@@ -37,7 +37,7 @@ function startGameByName(gameName) {
   }
 
   if (gameName === 'Hanged') {
-    // Cambiado para Hanged específicamente
+
     startHangedGame(gameContainer);
   } else {
     const newGameContainer = selectedGame();
