@@ -21,7 +21,7 @@ export function startHangedGame() {
 
   const hangmanImage = document.createElement("img");
   hangmanImage.id = "hangman-image";
-  hangmanImage.src = "public/hangman-0.png";
+  hangmanImage.src = "/hangman-0.png";
 
   const wordContainer = document.createElement("div");
   wordContainer.id = "word-container";
@@ -76,7 +76,7 @@ export function startHangedGame() {
       attemptsContainer.textContent = `Remaining attempts: ${remainingAttempts}`;
 
 
-      hangmanImage.src = `public/hangman-${6 - remainingAttempts}.png`;
+      hangmanImage.src = `/hangman-${6 - remainingAttempts}.png`;
 
 
       if (remainingAttempts === 0) {
