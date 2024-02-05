@@ -24,10 +24,11 @@
   border: 2px solid #333;
   cursor: pointer;
   transition: background-color 0.3s;
+  color: #fff;
 }
 
 .cell:hover {
-  background-color: #f0f0f0;
+  background-color: #99b326;
 }
 
 #player-selection {
@@ -47,7 +48,7 @@
 button {
   padding: 15px;
   font-size: 16px;
-  background-color: #4ba78b;
+  background-color: #734ba7;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -57,5 +58,5 @@ button {
 }
 
 button:hover {
-  background-color: #48d1a8b0;
+  background-color: #9348d1b0;
 }

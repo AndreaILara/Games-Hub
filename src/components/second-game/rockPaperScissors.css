@@ -18,7 +18,7 @@
 .choices-container button {
   padding: 20px;
   font-size: 16px;
-  background-color: #4ba78b;
+  background-color: #734ba7;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -26,6 +26,22 @@
   transition: background-color 0.3s;
 }
 
+.choices-container button.selected {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
 .choices-container button:hover {
-  background-color: #48d1a8b0;
+  background-color: #9348d1b0;
 }
