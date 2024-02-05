@@ -43,7 +43,7 @@ function startGameByName(gameName) {
     const newGameContainer = selectedGame();
 
     if (!newGameContainer) {
-      console.error('Error al iniciar el juego:', gameName);
+      console.error('Error loading game:', gameName);
       return;
     }
 
