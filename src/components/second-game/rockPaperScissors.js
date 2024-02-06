@@ -50,7 +50,7 @@ export function startRockPaperScissors() {
 
   function playRound(userChoice) {
     const computerChoice = getComputerChoice();
-    const randomResult = Math.floor(Math.random() * 3); // 0 para empate, 1 para victoria, 2 para derrota
+    const randomResult = Math.floor(Math.random() * 3);
 
     choicesContainer.querySelectorAll('button').forEach(button => button.classList.remove('selected'));
     const userButton = Array.from(choicesContainer.querySelectorAll('button')).find(button => getEmoji(userChoice) === button.textContent);
@@ -61,6 +61,13 @@ export function startRockPaperScissors() {
     }, 500);
 
     let result = getResult(userChoice, computerChoice);
+
+    // Actualizar puntuaciones
+    if (result === 'Wins') {
+      userWins++;
+    } else if (result === 'Lose') {
+      computerWins++;
+    }
 
     updateUserScore();
     updateComputerScore();
@@ -101,7 +108,7 @@ export function startRockPaperScissors() {
   }
 
   function saveGameData() {
-    // Implementa la lógica de guardado de datos si es necesario
+
   }
 
   return container;
