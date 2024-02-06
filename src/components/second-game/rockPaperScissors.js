@@ -37,8 +37,7 @@ export function startRockPaperScissors() {
 
   function playRound(userChoice) {
     const computerChoice = getComputerChoice();
-    const result = getResult(userChoice, computerChoice);
-
+    const randomResult = Math.floor(Math.random() * 3); // 0 para empate, 1 para victoria, 2 para derrota
 
     choicesContainer.querySelectorAll('button').forEach(button => button.classList.remove('selected'));
     const userButton = Array.from(choicesContainer.querySelectorAll('button')).find(button => button.textContent.includes(userChoice));
@@ -48,17 +47,19 @@ export function startRockPaperScissors() {
       userButton.classList.remove('selected');
     }, 500);
 
+    let result;
 
-    const machineChoice = getMachineChoice();
-
-    const adjustedResult = getResult(userChoice, machineChoice);
-
-    switch (adjustedResult) {
-      case 'Wins':
-        userWins++;
+    switch (randomResult) {
+      case 0:
+        result = 'Tie';
         break;
-      case 'Lose':
+      case 1:
+        userWins++;
+        result = 'Wins';
+        break;
+      case 2:
         computerWins++;
+        result = 'Lose';
         break;
     }
 
@@ -66,9 +67,8 @@ export function startRockPaperScissors() {
     updateComputerScore();
     saveGameData();
 
-    resultDisplay.textContent = `You chose ${userChoice}. The machine chose ${machineChoice}. Result: ${adjustedResult.toUpperCase()}.`;
+    resultDisplay.textContent = `You chose ${userChoice}. The machine chose ${computerChoice}. Result: ${result.toUpperCase()}.`;
   }
-
   function getComputerChoice() {
     const randomIndex = Math.floor(Math.random() * choices.length);
     return choices[randomIndex];

@@ -1,23 +1,17 @@
+// Importar estilos CSS
 import './hanged.css';
 
+import './hanged.css';
 
 let gameStarted = false;
 
-
 export function startHangedGame() {
-  if (gameStarted) {
-    alert("The game has already started. Play again after finishing!")
-    return;
-  }
-
   gameStarted = true;
-
 
   const words = ["javascript", "hangman", "developer", "coding"];
   let selectedWord = words[Math.floor(Math.random() * words.length)];
   let remainingAttempts = 6;
   let guessedLetters = [];
-
 
   const hangmanImage = document.createElement("img");
   hangmanImage.id = "hangman-image";
@@ -34,11 +28,14 @@ export function startHangedGame() {
   const lettersContainer = document.createElement("div");
   lettersContainer.id = "letters-container";
   lettersContainer.innerHTML = createAlphabetButtons();
+  lettersContainer.addEventListener("click", handleLetterClick);
+
+  const resultBox = document.createElement("div");
+  resultBox.className = "result-box";
 
   const playAgainButton = document.createElement("button");
   playAgainButton.textContent = "Play again";
   playAgainButton.addEventListener("click", resetGame);
-
 
   const gameContainer = document.getElementById("game-container");
   gameContainer.innerHTML = "";
@@ -46,46 +43,53 @@ export function startHangedGame() {
   gameContainer.appendChild(wordContainer);
   gameContainer.appendChild(attemptsContainer);
   gameContainer.appendChild(lettersContainer);
+  gameContainer.appendChild(resultBox);
   gameContainer.appendChild(playAgainButton);
 
+  function handleLetterClick(event) {
+    if (remainingAttempts > 0) {
+      const clickedElement = event.target;
+      if (clickedElement.classList.contains("letter") && !clickedElement.classList.contains("disabled")) {
+        const letter = clickedElement.dataset.letter;
+        clickedElement.classList.add("disabled");
 
-  document.querySelectorAll(".letter").forEach(letter => {
-    letter.addEventListener("click", () => handleLetterClick(letter.textContent));
-  });
+        if (selectedWord.includes(letter)) {
+          guessedLetters.push(letter);
+          wordContainer.innerHTML = createWordTemplate();
 
+          if (!createWordTemplate().includes("_")) {
+            displayResultMessage("Congratulations! You guessed the word.", true);
+          }
+        } else {
+          remainingAttempts--;
 
-  function handleLetterClick(letter) {
+          if (remainingAttempts >= 0) {
+            attemptsContainer.textContent = `Remaining attempts: ${remainingAttempts}`;
+            hangmanImage.src = `/hangman-${6 - remainingAttempts}.png`;
+          }
 
-    const clickedLetter = document.querySelector(`.letter[data-letter="${letter}"]`);
-    clickedLetter.classList.add("disabled");
-
-
-    if (selectedWord.includes(letter)) {
-
-      guessedLetters.push(letter);
-      wordContainer.innerHTML = createWordTemplate();
-
-
-      if (!createWordTemplate().includes("_")) {
-        alert("Congratulations! You guessed the word.");
-        resetGame();
-      }
-    } else {
-
-      remainingAttempts--;
-      attemptsContainer.textContent = `Remaining attempts: ${remainingAttempts}`;
-
-
-      hangmanImage.src = `/hangman-${6 - remainingAttempts}.png`;
-
-
-      if (remainingAttempts === 0) {
-        alert(`Oh no! You have lost. The word was "${selectedWord}".`);
-        resetGame();
+          if (remainingAttempts === 0) {
+            disableLetters(); // Deshabilitar letras después de agotar intentos
+            displayResultMessage(`Oh no! You have lost.`, false);
+          }
+        }
       }
     }
   }
 
+  function disableLetters() {
+    // Deshabilitar todas las letras
+    document.querySelectorAll(".letter").forEach(letter => {
+      letter.classList.add("disabled");
+    });
+  }
+  function displayResultMessage(message, isWin) {
+    resultBox.innerHTML = `<p>${message}</p>`;
+    if (!isWin) {
+      resultBox.innerHTML += `<p>The correct word was: ${selectedWord}</p>`;
+    }
+    resultBox.classList.add(isWin ? "win" : "lose");
+  }
 
   function createWordTemplate() {
     return selectedWord
@@ -96,7 +100,6 @@ export function startHangedGame() {
       .join("");
   }
 
-
   function createAlphabetButtons() {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     return alphabet
@@ -105,9 +108,22 @@ export function startHangedGame() {
       .join("");
   }
 
-
   function resetGame() {
     gameStarted = false;
-    startHangedGame();
+    selectedWord = words[Math.floor(Math.random() * words.length)];
+    remainingAttempts = 6;
+    guessedLetters = [];
+    hangmanImage.src = "/hangman-0.png";
+    wordContainer.innerHTML = createWordTemplate();
+    attemptsContainer.textContent = `Remaining attempts: ${remainingAttempts}`;
+
+    // Enable all letters again
+    document.querySelectorAll(".letter").forEach(letter => {
+      letter.classList.remove("disabled");
+    });
+
+    // Remove the result box content and styling
+    resultBox.innerHTML = "";
+    resultBox.classList.remove("win", "lose");
   }
 }

@@ -7,9 +7,11 @@ body {
   margin: 0;
   background-image: url(./public/background.jpg);
   background-size: cover;
- color: #fff;
+  background-attachment: fixed; /* Agregado para fijar el fondo */
+  color: #fff;
 }
 
+/* Resto del código sin cambios */
 .main-container {
   display: flex;
   justify-content: center;
@@ -24,8 +26,9 @@ body {
   text-align: center;
   gap: 10px;
 }
+
 h1 {
-  color: #e0b31f;
+  color: #ffd13a;
   font-size: 50px;
   margin-bottom: 20px;
   cursor: pointer;
@@ -37,8 +40,9 @@ h1 {
 }
 
 h1:hover {
-  color: #ffcc009a; 
+  color: #cac82b63; 
 }
+
 .game-buttons {
   display: flex;
   flex-direction: row;
@@ -60,4 +64,15 @@ h1:hover {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  body {
+    background-image: url(./public/background_cell.jpg);
+    background-size: cover;
+    background-attachment: fixed; /* Agregado para fijar el fondo */
+    color: #fff;
+  }
+ 
+  
 }

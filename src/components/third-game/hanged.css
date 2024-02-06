@@ -4,14 +4,31 @@
 }
 
 #hangman-image {
-  margin-top: 40px;
-  width: 100px;
-  height: 100px;
+  margin-top: 160px;
+  width: 120px;
+  height: 120px;
 }
 
 #word-container {
   font-size: 24px;
   margin-bottom: 20px;
+}
+
+.result-box {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 10px;
+  /* Ajusta los colores para ganar y perder */
+  background-color: #8ecc3d56; /* Cambiar a #dc3545 para color de pérdida */
+  border: 2px solid #aaf007af; /* Cambiar a #dc3545 para color de pérdida */
+  border-radius: 5px;
+  text-align: center;
+}
+
+.result-box.lose {
+  background-color: #dc354671;
+  border: 2px solid #8a1c1c;
 }
 
 .word-letter {
@@ -57,7 +74,6 @@
   transition: background-color 0.3s;
   margin-bottom: 10px;
 
-  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,9 +85,13 @@
   color: #ffffff !important;
 }
 
-
 @media (max-width: 600px) {
   .letter {
     margin: 0 0 10px 0;
+  }
+  #hangman-image {
+    margin-top: 60px;
+    width: 120px;
+    height: 120px;
   }
 }
